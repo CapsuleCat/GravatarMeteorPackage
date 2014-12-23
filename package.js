@@ -1,8 +1,8 @@
 Package.describe({
   name: 'idmontie:gravatar',
   summary: 'Gravatar package for Metor',
-  version: '1.0.0',
-  git: 'https://github.com/idmontie/gravatar'
+  version: '1.0.1',
+  git: 'https://github.com/idmontie/gravatar.git'
 });
 
 Package.onUse(function(api) {
