@@ -10,6 +10,7 @@ Package.onUse( function ( api ) {
   'use strict';
 
   api.versionsFrom( '1.0.2' )
+  api.addFiles( 'lib/md5.js' )
   api.addFiles( 'idmontie:gravatar.js' )
 });
 
