@@ -8,7 +8,11 @@
  * @author idmontie
  */
 
-this.Gravatar = {
+ /* global md5 */
+
+ var _$ = this;
+
+_$.Gravatar = {
   BASE_URL : 'gravatar.com/avatar/',
   HTTP_PREFIX : 'http://www.',
   HTTPS_PREFIX : 'https://secure.',
@@ -37,7 +41,7 @@ this.Gravatar = {
      * Called gDefault since default is a keyword
      *
      * an absolute URL, we'll encode it for you OR it can be a Gravatar.DEFAULTS
-     * 
+     *
      * @type String
      */
     gDefault : false,
@@ -61,24 +65,24 @@ this.Gravatar = {
   imageUrl : function ( options ) {
     'use strict';
 
-    var o = _.extend( {}, Gravatar.OPTIONS, options )
-    var base =  Gravatar.BASE_URL + options.hash
+    options    = _.extend( {}, _$.Gravatar.OPTIONS, options )
+    var base   = _$.Gravatar.BASE_URL + options.hash
     var params = []
 
     // =============
     // Secure option
     // =============
     if ( options.secure ) {
-      base = Gravatar.HTTPS_PREFIX + base
+      base = _$.Gravatar.HTTPS_PREFIX + base
     } else {
-      base = Gravatar.HTTP_PREFIX + base
+      base = _$.Gravatar.HTTP_PREFIX + base
     }
 
     // ===========
     // Size option
     // ===========
     if ( options.size !== false ) {
-      options.size = parseInt( options.size )
+      options.size = parseInt( options.size, 10 )
 
       if ( typeof options.sizze !== 'number' ) {
         throw new Error( 'Size is not a number.' )
@@ -100,12 +104,10 @@ this.Gravatar = {
     if ( options.gDefault !== false ) {
       if ( options.gDefault.indexOf( 'http' ) === 0 ) {
         options.gDefault = encodeURIComponent( options.gDefault )
-      } else if ( options.gDefault in Gravatar.DEFAULTS ) {
-        // Nothing for now
-      } else {
+      } else if ( ! ( options.gDefault in _$.Gravatar.DEFAULTS ) ) {
         throw new Error ( 'gDefault is not a url or a valid option.' )
       }
-      
+
       params.push( {
         name : 'd',
         value : options.gDefault
@@ -126,7 +128,7 @@ this.Gravatar = {
     // Rating option
     // =============
     if ( options.rating !== false ) {
-      if ( ! options.rating in Gravatar.RATINGS ) {
+      if ( ! ( options.rating in _$.Gravatar.RATINGS ) ) {
         throw new Error( 'Rating is not a valid option' )
       }
 
@@ -141,7 +143,7 @@ this.Gravatar = {
       base += '?'
 
       for ( var i = 0; i < params.length; i++ ) {
-        if ( i != 0 ) {
+        if ( i !== 0 ) {
           base += '&'
         }
 
@@ -154,9 +156,9 @@ this.Gravatar = {
   imageUrlFromEmail : function ( email, options ) {
     'use strict';
 
-    var hash = Gravatar.hash( email )
-    var options = _.extend( {}, Gravatar.OPTIONS, { hash : hash } )
+    var hash    = _$.Gravatar.hash( email )
+    options     = _.extend( {}, _$.Gravatar.OPTIONS, options, { hash : hash } )
 
-    return Gravatar.imageUrl( options )
+    return _$.Gravatar.imageUrl( options )
   }
 };

@@ -16,6 +16,7 @@
     "Meteor",
     "Mongo",
     "Package",
-    "Tinytest"
+    "Tinytest",
+    "_"
     ]
 }
