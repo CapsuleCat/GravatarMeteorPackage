@@ -20,6 +20,7 @@ module.exports = function (grunt) {
             '../*.js',
             '!../start_test.js',
             '!../phantom_runner.js'
+          ]
         }
       },
       // JS Coding Style
