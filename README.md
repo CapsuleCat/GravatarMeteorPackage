@@ -9,3 +9,6 @@ Gravatar API functionality for Meteor.
 # Usage
 
 Grab [Gravatar](https://en.gravatar.com/) images or profiles.
+
+# Documentation
+

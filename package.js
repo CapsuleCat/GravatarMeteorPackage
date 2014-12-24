@@ -1,17 +1,22 @@
-Package.describe({
+Package.describe( {
   name: 'idmontie:gravatar',
-  summary: 'Gravatar package for Metor',
+  summary: 'Gravatar package for Meteor',
   version: '1.0.1',
+  license: 'MIT',
   git: 'https://github.com/idmontie/gravatar.git'
+} )
+
+Package.onUse( function ( api ) {
+  'use strict';
+
+  api.versionsFrom( '1.0.2' )
+  api.addFiles( 'idmontie:gravatar.js' )
 });
 
-Package.onUse(function(api) {
-  api.versionsFrom('1.0.2');
-  api.addFiles('idmontie:gravatar.js');
-});
+Package.onTest( function ( api ) {
+  'use strict';
 
-Package.onTest(function(api) {
-  api.use('tinytest');
-  api.use('idmontie:gravatar');
-  api.addFiles('idmontie:gravatar-tests.js');
+  api.use( 'tinytest' )
+  api.use( 'idmontie:gravatar' )
+  api.addFiles( 'idmontie:gravatar-tests.js' )
 });
