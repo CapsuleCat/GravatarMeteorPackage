@@ -7,9 +7,10 @@ before_install:
   - npm install grunt-contrib-jshint
   - npm install grunt-jscs
   - gem update --system
+  - wget https://raw.github.com/arunoda/travis-ci-meteor-packages/master/Makefile
+  - wget https://raw.github.com/arunoda/travis-ci-meteor-packages/master/start_test.js
+  - wget https://raw.github.com/arunoda/travis-ci-meteor-packages/master/phantom_runner.js
+  - curl https://install.meteor.com | /bin/sh
+  - node start_test.js
   - cd .standards
-#  - wget https://raw.github.com/arunoda/travis-ci-meteor-packages/master/Makefile
-#  - wget https://raw.github.com/arunoda/travis-ci-meteor-packages/master/start_test.js
-#  - wget https://raw.github.com/arunoda/travis-ci-meteor-packages/master/phantom_runner.js
-#  - curl https://install.meteor.com | /bin/sh
 install: npm install

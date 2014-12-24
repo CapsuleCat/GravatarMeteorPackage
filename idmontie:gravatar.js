@@ -43,7 +43,8 @@ this.Gravatar = {
     gDefault : false,
     forceDefault : false,
     rating : false,
-    secure : false
+    secure : false,
+    hash : ''
   },
   hash : function ( email ) {
     'use strict';
