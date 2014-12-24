@@ -17,7 +17,7 @@ _$.Gravatar = {
   HTTP_PREFIX : 'http://www.',
   HTTPS_PREFIX : 'https://secure.',
   DEFAULTS : {
-    '404' : '404',
+    404 : '404',
     mm : 'mm',
     identicon : 'identicon',
     wavatar : 'wavatar',
@@ -71,7 +71,7 @@ _$.Gravatar = {
   },
   /**
    * Trims, lower cases, and then md5 the given email
-   * 
+   *
    * @param String email
    * @return hash as String
    */
@@ -99,7 +99,7 @@ _$.Gravatar = {
    *
    * - gDefault String (Optional)
    *     Called gDefault since default is a keyword.
-   *     An absolute URL, we'll encode it for you 
+   *     An absolute URL, we'll encode it for you
    *     or it can be a Gravatar.DEFAULTS
    *
    * - forceDefault Boolean (Optional)
@@ -277,7 +277,7 @@ _$.Gravatar = {
   /**
    * Creates a gravatar profile script url for the given email and options.
    * The email will be hashed using the Gravatar.hash() function.
-   * 
+   *
    * @param String email
    * @param Object options
    */
