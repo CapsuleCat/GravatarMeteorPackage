@@ -17,7 +17,7 @@ _$.Gravatar = {
   HTTP_PREFIX : 'http://www.',
   HTTPS_PREFIX : 'https://secure.',
   DEFAULTS : {
-    '404 ': '404',
+    '404' : '404',
     mm : 'mm',
     identicon : 'identicon',
     wavatar : 'wavatar',
@@ -68,7 +68,13 @@ _$.Gravatar = {
      */
     callback : false,
     hash : ''
-  }
+  },
+  /**
+   * Trims, lower cases, and then md5 the given email
+   * 
+   * @param String email
+   * @return hash as String
+   */
   hash : function ( email ) {
     'use strict';
 
@@ -81,6 +87,36 @@ _$.Gravatar = {
 
     return md5( email )
   },
+  /**
+   * Given a set of options, will generate a gravatar image url.
+   *
+   * Options:
+   * - hash String
+   *     You can generate this with Gravatar.hash()
+   * - size Number (Optional)
+   *     Sets the size of the gravatar in pixels.
+   *     Anywhere from 1 to 2048.
+   *
+   * - gDefault String (Optional)
+   *     Called gDefault since default is a keyword.
+   *     An absolute URL, we'll encode it for you 
+   *     or it can be a Gravatar.DEFAULTS
+   *
+   * - forceDefault Boolean (Optional)
+   *     Forces gDefault to be used
+   *
+   * - rating Gravitar.RATINGS [String] (Optional)
+   *     g: suitable for display on all websites with any audience type.
+   *     pg: may contain rude gestures, provocatively dressed individuals, the lesser swear words, or mild violence.
+   *     r: may contain such things as harsh profanity, intense violence, nudity, or hard drug use.
+   *     x: may contain hardcore sexual imagery or extremely disturbing violence.
+   *
+   * - secure Boolean (Optional)
+   *     Forces use of HTTPS_PREFIX
+   *
+   * @param Object options
+   * @return String
+   */
   imageUrl : function ( options ) {
     'use strict';
 
@@ -103,7 +139,7 @@ _$.Gravatar = {
     if ( options.size !== false ) {
       options.size = parseInt( options.size, 10 )
 
-      if ( typeof options.sizze !== 'number' ) {
+      if ( typeof options.size !== 'number' ) {
         throw new Error( 'Size is not a number.' )
       }
 
@@ -172,6 +208,15 @@ _$.Gravatar = {
 
     return base
   },
+  /**
+   * Creates a gravatar image url for the given email and options.
+   *
+   * The email will be hashed using the Gravatar.hash() function.
+   *
+   * @param String email
+   * @param Object options
+   * @see imageUrl
+   */
   imageUrlFromEmail : function ( email, options ) {
     'use strict';
 
@@ -180,6 +225,19 @@ _$.Gravatar = {
 
     return _$.Gravatar.imageUrl( options )
   },
+  /**
+   * Given a set of options, will generate a gravatar profile url.
+   *
+   * Options:
+   * - hash String
+   *     You can generate this with Gravatar.hash()
+   *
+   * - callback String
+   *     The name as a string of a global function
+   *
+   * @param Object options
+   * @return String
+   */
   profileUrl : function ( options ) {
     'use strict';
 
@@ -197,7 +255,7 @@ _$.Gravatar = {
 
       params.push( {
         name : 'callback',
-        value : options.rating
+        value : options.callback
       } )
     }
 
@@ -216,6 +274,13 @@ _$.Gravatar = {
 
     return base
   },
+  /**
+   * Creates a gravatar profile script url for the given email and options.
+   * The email will be hashed using the Gravatar.hash() function.
+   * 
+   * @param String email
+   * @param Object options
+   */
   profileUrlFromEmail : function ( email, options ) {
     'use strict';
 
