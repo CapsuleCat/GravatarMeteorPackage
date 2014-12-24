@@ -1,7 +1,7 @@
 Package.describe( {
   name: 'idmontie:gravatar',
   summary: 'Gravatar package for Meteor',
-  version: '1.0.1',
+  version: '1.0.2',
   license: 'MIT',
   git: 'https://github.com/idmontie/gravatar.git'
 } )
