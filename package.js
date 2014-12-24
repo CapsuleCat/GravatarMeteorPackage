@@ -18,5 +18,6 @@ Package.onTest( function ( api ) {
 
   api.use( 'tinytest' )
   api.use( 'idmontie:gravatar' )
+  api.addFiles( 'lib/md5.js' )
   api.addFiles( 'idmontie:gravatar-tests.js' )
 });

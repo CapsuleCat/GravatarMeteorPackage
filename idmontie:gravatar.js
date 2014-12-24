@@ -30,7 +30,7 @@ _$.Gravatar = {
     r : 'r',
     x : 'x'
   },
-  OPTIONS : {
+  EMAIL_OPTIONS : {
     /**
      * anywhere from 1 to 2048
      *
@@ -65,7 +65,7 @@ _$.Gravatar = {
   imageUrl : function ( options ) {
     'use strict';
 
-    options    = _.extend( {}, _$.Gravatar.OPTIONS, options )
+    options    = _.extend( {}, _$.Gravatar.EMAIL_OPTIONS, options )
     var base   = _$.Gravatar.BASE_URL + options.hash
     var params = []
 
@@ -160,5 +160,8 @@ _$.Gravatar = {
     options     = _.extend( {}, _$.Gravatar.OPTIONS, options, { hash : hash } )
 
     return _$.Gravatar.imageUrl( options )
+  },
+  profileUrl : function ( options ) {
+
   }
 };
