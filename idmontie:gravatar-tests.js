@@ -56,7 +56,7 @@ Tinytest.add( 'profileUrlFromEmail with email should return url', function ( tes
   'use strict';
 
   var url = _$.Gravatar.profileUrlFromEmail( 'idmontie@asu.edu' )
-  test.equal( url, 'http://www.gravatar.com/avatar/de2fe4e58ee0f9fc1c1c1a71feeab8f8' )
+  test.equal( url, 'https://secure.gravatar.com/avatar/de2fe4e58ee0f9fc1c1c1a71feeab8f8' )
 } )
 
 Tinytest.add( 'profileUrl with optoins should return url', function ( test ) {
