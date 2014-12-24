@@ -13,7 +13,7 @@
  var _$ = this;
 
 _$.Gravatar = {
-  BASE_URL : 'gravatar.com/avatar/',
+  BASE_IMAGE_URL : 'gravatar.com/avatar/',
   HTTP_PREFIX : 'http://www.',
   HTTPS_PREFIX : 'https://secure.',
   DEFAULTS : {
@@ -45,11 +45,30 @@ _$.Gravatar = {
      * @type String
      */
     gDefault : false,
+    /**
+     * @type Boolean
+     */
     forceDefault : false,
+    /**
+     * @type Gravatar.RATINGS
+     */
     rating : false,
+    /**
+     * @type Boolean
+     */
     secure : false,
+    /*
+     * @type String
+     */
     hash : ''
   },
+  PROFILE_OPTIONS : {
+    /**
+     * @type Function
+     */
+    callback : false,
+    hash : ''
+  }
   hash : function ( email ) {
     'use strict';
 
@@ -66,7 +85,7 @@ _$.Gravatar = {
     'use strict';
 
     options    = _.extend( {}, _$.Gravatar.EMAIL_OPTIONS, options )
-    var base   = _$.Gravatar.BASE_URL + options.hash
+    var base   = _$.Gravatar.BASE_IMAGE_URL + options.hash
     var params = []
 
     // =============
@@ -156,12 +175,53 @@ _$.Gravatar = {
   imageUrlFromEmail : function ( email, options ) {
     'use strict';
 
-    var hash    = _$.Gravatar.hash( email )
-    options     = _.extend( {}, _$.Gravatar.OPTIONS, options, { hash : hash } )
+    var hash = _$.Gravatar.hash( email )
+    options  = _.extend( {}, _$.Gravatar.IMAGE_OPTIONS, options, { hash : hash } )
 
     return _$.Gravatar.imageUrl( options )
   },
   profileUrl : function ( options ) {
+    'use strict';
 
+    options    = _.extend( {}, _$.Gravatar.PROFILE_OPTIONS, options )
+    var base   = _$.Gravatar.HTTPS_PREFIX + _$.Gravatar.BASE_IMAGE_URL + options.hash
+    var params = []
+
+    // =============
+    // Callback option
+    // =============
+    if ( options.callback !== false ) {
+      if ( typeof options.callback !== 'string' ) {
+        throw new Error( 'Callback is not a string' )
+      }
+
+      params.push( {
+        name : 'callback',
+        value : options.rating
+      } )
+    }
+
+    // join the params
+    if ( params.length > 0 ) {
+      base += '?'
+
+      for ( var i = 0; i < params.length; i++ ) {
+        if ( i !== 0 ) {
+          base += '&'
+        }
+
+        base += params[i].name + '=' + params[i].value
+      }
+    }
+
+    return base
+  },
+  profileUrlFromEmail : function ( email, options ) {
+    'use strict';
+
+    var hash = _$.Gravatar.hash( email )
+    options  = _.extend( {}, _$.Gravatar.PROFILE_OPTIONS, options, { hash : hash } )
+
+    return _$.Gravatar.profileUrl( options )
   }
 };
