@@ -10,9 +10,7 @@
 
  /* global md5 */
 
- var _$ = this;
-
-_$.Gravatar = {
+Gravatar = {
   BASE_IMAGE_URL : 'gravatar.com/avatar/',
   HTTP_PREFIX : 'http://www.',
   HTTPS_PREFIX : 'https://secure.',
@@ -120,17 +118,17 @@ _$.Gravatar = {
   imageUrl : function ( options ) {
     'use strict';
 
-    options    = _.extend( {}, _$.Gravatar.EMAIL_OPTIONS, options )
-    var base   = _$.Gravatar.BASE_IMAGE_URL + options.hash
+    options    = _.extend( {}, Gravatar.EMAIL_OPTIONS, options )
+    var base   = Gravatar.BASE_IMAGE_URL + options.hash
     var params = []
 
     // =============
     // Secure option
     // =============
     if ( options.secure ) {
-      base = _$.Gravatar.HTTPS_PREFIX + base
+      base = Gravatar.HTTPS_PREFIX + base
     } else {
-      base = _$.Gravatar.HTTP_PREFIX + base
+      base = Gravatar.HTTP_PREFIX + base
     }
 
     // ===========
@@ -159,7 +157,7 @@ _$.Gravatar = {
     if ( options.gDefault !== false ) {
       if ( options.gDefault.indexOf( 'http' ) === 0 ) {
         options.gDefault = encodeURIComponent( options.gDefault )
-      } else if ( ! ( options.gDefault in _$.Gravatar.DEFAULTS ) ) {
+      } else if ( ! ( options.gDefault in Gravatar.DEFAULTS ) ) {
         throw new Error ( 'gDefault is not a url or a valid option.' )
       }
 
@@ -183,7 +181,7 @@ _$.Gravatar = {
     // Rating option
     // =============
     if ( options.rating !== false ) {
-      if ( ! ( options.rating in _$.Gravatar.RATINGS ) ) {
+      if ( ! ( options.rating in Gravatar.RATINGS ) ) {
         throw new Error( 'Rating is not a valid option' )
       }
 
@@ -220,10 +218,10 @@ _$.Gravatar = {
   imageUrlFromEmail : function ( email, options ) {
     'use strict';
 
-    var hash = _$.Gravatar.hash( email )
-    options  = _.extend( {}, _$.Gravatar.IMAGE_OPTIONS, options, { hash : hash } )
+    var hash = Gravatar.hash( email )
+    options  = _.extend( {}, Gravatar.IMAGE_OPTIONS, options, { hash : hash } )
 
-    return _$.Gravatar.imageUrl( options )
+    return Gravatar.imageUrl( options )
   },
   /**
    * Given a set of options, will generate a gravatar profile url.
@@ -241,8 +239,8 @@ _$.Gravatar = {
   profileUrl : function ( options ) {
     'use strict';
 
-    options    = _.extend( {}, _$.Gravatar.PROFILE_OPTIONS, options )
-    var base   = _$.Gravatar.HTTPS_PREFIX + _$.Gravatar.BASE_IMAGE_URL + options.hash
+    options    = _.extend( {}, Gravatar.PROFILE_OPTIONS, options )
+    var base   = Gravatar.HTTPS_PREFIX + Gravatar.BASE_IMAGE_URL + options.hash
     var params = []
 
     // =============
@@ -284,9 +282,9 @@ _$.Gravatar = {
   profileUrlFromEmail : function ( email, options ) {
     'use strict';
 
-    var hash = _$.Gravatar.hash( email )
-    options  = _.extend( {}, _$.Gravatar.PROFILE_OPTIONS, options, { hash : hash } )
+    var hash = Gravatar.hash( email )
+    options  = _.extend( {}, Gravatar.PROFILE_OPTIONS, options, { hash : hash } )
 
-    return _$.Gravatar.profileUrl( options )
+    return Gravatar.profileUrl( options )
   }
 };

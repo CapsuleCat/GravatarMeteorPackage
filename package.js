@@ -6,19 +6,24 @@ Package.describe( {
   git: 'https://github.com/idmontie/gravatar.git'
 } )
 
+var packageFiles = [
+  'lib/md5.js',
+  'idmontie-gravatar.js'
+];
+
 Package.onUse( function ( api ) {
   'use strict';
 
   api.versionsFrom( '1.0.2' )
-  api.addFiles( 'lib/md5.js' )
-  api.addFiles( 'idmontie:gravatar.js' )
+  api.use( 'underscore' )
+  api.addFiles( packageFiles )
 });
 
 Package.onTest( function ( api ) {
   'use strict';
 
   api.use( 'tinytest' )
-  api.use( 'idmontie:gravatar' )
-  api.addFiles( 'lib/md5.js' )
-  api.addFiles( 'idmontie:gravatar-tests.js' )
+  api.use( 'underscore' )
+  api.addFiles( packageFiles )
+  api.addFiles( 'idmontie-gravatar-tests.js' )
 });
