@@ -1,3 +1,5 @@
+/* global Gravatar */
+
 Tinytest.add('example', function ( test ) {
   'use strict';
 

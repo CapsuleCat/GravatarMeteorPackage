@@ -8,7 +8,8 @@
  * @author idmontie
  */
 
- /* global md5 */
+/* global Gravatar:true */
+/* global md5 */
 
 Gravatar = {
   BASE_IMAGE_URL : 'gravatar.com/avatar/',
