@@ -6,11 +6,24 @@ Meteor Gravatars
 
 Gravatar API functionality for Meteor.
 
+# Install
+
+```
+$ meteor add idmontie:gravatar
+```
+
 # Usage
 
 Grab [Gravatar](https://en.gravatar.com/) images or profiles.
 
-# Documentation
+The following are available for you to use:
+
+* `Gravatar.hash(email)`
+* `Gravatar.imageUrlFromEmail(email, options)`
+* `Gravatar.imageUrl(options)` - in case you want to use precomputed hashes
+* `Gravatar.profileUrlFromEmail(email, options)`
+* `Gravatar.profileUrl(options)` - in case you want to use precomputed hashes
+
 
 This project add `Gravatars` to the `this` context for the server and client.  The following methods are provided with example usage:
 
