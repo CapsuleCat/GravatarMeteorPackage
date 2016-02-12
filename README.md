@@ -2,7 +2,7 @@ Meteor Gravatars
 ================
 
 [![Travis](https://img.shields.io/travis/idmontie/meteor-gravatar.svg?style=flat)](https://travis-ci.org/idmontie/meteor-gravatar) 
-[![GitHub license](https://img.shields.io/:license-mit-blue.svg?style=flat)](https://github.com/idmontie/gravatar/blob/master/LICENSE.md)
+[![GitHub license](https://img.shields.io/:license-mit-blue.svg?style=flat)](https://github.com/idmontie/GravatarMeteorPackage/blob/master/LICENSE.md)
 
 Gravatar API functionality for Meteor.
 
